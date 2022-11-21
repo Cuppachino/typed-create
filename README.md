@@ -27,6 +27,22 @@ export const create = <T>(base: T) => {
   }
 }
 ```
+```ts
+export interface CreateApi<T> {
+  getState: () => T;
+  setState: (newState: T | Partial<T>) => T;
+}
+
+type _InternalCreateApi<T, U> = CreateApi<{
+  [K in keyof T | keyof U]: K extends keyof T
+    ? T[K]
+    : K extends keyof U
+    ? U[K]
+    : never;
+}> extends CreateApi<infer V>
+  ? CreateApi<V>
+  : never;
+```
 
 In response to [this](https://stackoverflow.com/questions/70758462/how-to-infer-a-functions-parameter-type-from-its-return-type) question on stackoverflow
 
