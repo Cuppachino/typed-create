@@ -1,0 +1,8 @@
+{
+  "name": "3hwmxr--run",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "typescript": "5.0.0-dev.20221121"
+  }
+}
